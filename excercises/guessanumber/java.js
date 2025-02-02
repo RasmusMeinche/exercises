@@ -1,5 +1,9 @@
-maxNum = 50;
-minNum = 1;
+let maxNum = 50;
+let minNum = 1;
 
-answer = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
-console.log("det her er det tilfældige tal:", answer)
+let answer = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+console.log("Det her er det tilfældige tal:", answer);
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector("#tal").textContent = "Det tilfældige tal er: " + answer;
+});
