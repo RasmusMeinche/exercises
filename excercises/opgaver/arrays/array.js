@@ -37,9 +37,35 @@ console.log(people); */
 
 //Videre med opgaven
 
-const people = ["Harry", "Ron", "Hermione"];
+//1
+/* const people = ["Harry", "Ron", "Hermione"];
 
 let result;
 
 result = people.push("Draco");
+console.log(result); */
+
+//2
+/* const people = ["Harry", "Ron", "Hermione"];
+
+let result;
+
+result = people.pop();
+console.log(result);
+ */
+
+//3
+/* const people = ["Harry", "Ron", "Hermione"];
+
+let result;
+
+result = people.push("Neville");
+console.log(result); */
+
+//5
+const people = ["Harry", "Ron", "Hermione"];
+
+let result;
+
+result = people.splice(1,0,"Cho");
 console.log(result);
