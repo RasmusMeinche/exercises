@@ -1,0 +1,31 @@
+button {
+    display: block;
+    margin: 0 auto;
+    font-size: larger;
+    width: 300px;
+    padding: 10px;
+}
+
+div {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+
+li a {
+    text-decoration: none;
+}
+
+.none {
+    display: none;
+}
