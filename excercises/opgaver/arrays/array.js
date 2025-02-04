@@ -63,9 +63,33 @@ result = people.push("Neville");
 console.log(result); */
 
 //5
-const people = ["Harry", "Ron", "Hermione"];
+/* const people = ["Harry", "Ron", "Hermione"];
 
 let result;
 
 result = people.splice(1,0,"Cho");
-console.log(result);
+console.log(result); */
+
+//6
+/* const people = ["Harry", "Ron", "Hermione"];
+
+let result;
+
+result = people.indexOf("Fred");
+console.log(result); */
+
+//7
+/* const people = ["Harry", "Ron", "Hermione"];
+
+let result;
+
+result = people.unshift("Ron");
+console.log(result); */
+
+//8
+/* const people = ["Harry", "Ron", "Hermione"];
+
+let result;
+
+result = people.shift("Ron");
+console.log(result); */
