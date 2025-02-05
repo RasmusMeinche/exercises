@@ -93,3 +93,11 @@ let result;
 
 result = people.shift("Ron");
 console.log(result); */
+
+const people = ["Harry", "Ron", "Hermione", "Neville"];
+
+function testParms (a, b, c, d) {
+console.log(`a: ${a}, b: ${b}, c: ${c}, d: ${d}`);
+}
+
+people.forEach(testParms);
