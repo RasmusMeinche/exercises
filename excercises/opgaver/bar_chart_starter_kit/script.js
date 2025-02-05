@@ -1,28 +1,41 @@
+const veh = [
+    {type: "Bus", fuel: "Diesel", passengers: 45, stops: ["Nørrebrograde", "Elmegade"]},
+    {type: "Bil", fuel: "Benzin", passengers: 4, ownedBy: "Klaus"},
+    {type: "Cykel", fuel: "Rugbrød", passengers: 0, ownedBy: "Jonas", isElectric: true},
+    {type: "Bil", passengers: 5, ownedBy: "Elon", isElectric: true},
+    {type: "MC", fuel: "Benzin", passengers: 2, ownedBy: "Fonda"},
+    {type: "Cykel", fuel: "Rugbrød", passengers: 2, ownedBy: "Vingegård", isTandem: true},
+    {type: "MC", fuel: "Benzin", passengers: 2, ownedBy: "Yolanda"},
+    {type: "Knallert", fuel: "Benzin", passengers: 1, ownedBy: "Børge"},
+    {type: "Knallert", fuel: "Benzin", passengers: 1, ownedBy: "Jonas"},
+    {type: "Løbehjul", passengers: 1, isElectric: true},
+];
 
-function skalBrugesOmLidt() {
-    
+const tbodyPointer = document.querySelector("tbody");
+
+const allElectricVehicle = veh.filter((vehicle) => vehicle.isElectric === true);
+const moreSeats = veh.filter((vehicle) => vehicle.passengers === 2 || vehicle.passengers === 3 || vehicle.passengers === 4 || vehicle.passengers === 5);
+const ownerByJonas = veh.filter((vehicle) => vehicle.ownedBy === "Jonas");
+const allBreadFuel = veh.filter((vehicle) => vehicle.fuel === "Rugbrød" && vehicle.passengers === 2);
+
+function filterVehicles () {
+    if (allElectricVehicle === true) {
+        showTheseVehicles(allElectricVehicle);
+    }
 }
 
-const barArray = [];
+showTheseVehicles(moreSeats);
 
-
-const list = document.querySelector("ul");
-
-const li = document.createElement("li");
-li.style.setProperty("--height", "30");
-list.appendChild(li);
-
-setInterval(generateBars, 100);
-
-
-function generateBars() {
-    const rndNum = Math.floor(Math.random() * 100);
-    const li = document.createElement("li");
-li.style.setProperty("--height", rndNum);
-    barArray.push(rndNum);
-    console.log("Det her er tallet:",barArray);
-    if (barArray.length >= 30) {
-        list.removeChild(list.children[0]);
-    }
-    list.appendChild(li);
+function showTheseVehicles(arr) {
+    arr.forEach(each => {
+        tbodyPointer.innerHTML += `<tr>
+        <td>${each.type}</td>
+        <td>${each.fuel}</td>
+        <td>${each.passengers}</td>
+        <td>${each.stops}</td>
+        <td>${each.ownedBy}</td>
+        <td>${each.isElectric}</td>
+        <td>${each.isTandem}</td>
+    </tr>`;
+    });
 }
