@@ -13,17 +13,11 @@ const veh = [
 const tbodyPointer = document.querySelector("tbody");
 
 const allElectricVehicle = veh.filter((vehicle) => vehicle.isElectric === true);
-const moreSeats = veh.filter((vehicle) => vehicle.passengers === 2 || vehicle.passengers === 3 || vehicle.passengers === 4 || vehicle.passengers === 5);
-const ownerByJonas = veh.filter((vehicle) => vehicle.ownedBy === "Jonas");
-const allBreadFuel = veh.filter((vehicle) => vehicle.fuel === "Rugbrød" && vehicle.passengers === 2);
+const moreSeats = veh.filter((vehicle) => vehicle.passengers > 2);
+const ownerByJonas = veh.filter((vehicle) => vehicle.ownedBy === "Jonas" && vehicle.isElectric === true);
+const allBreadFuel = veh.filter((vehicle) => vehicle.fuel === "Rugbrød" && vehicle.passengers > 1);
 
-function filterVehicles () {
-    if (allElectricVehicle === true) {
-        showTheseVehicles(allElectricVehicle);
-    }
-}
-
-showTheseVehicles(moreSeats);
+showTheseVehicles(allBreadFuel);
 
 function showTheseVehicles(arr) {
     arr.forEach(each => {
