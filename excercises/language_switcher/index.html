@@ -5,16 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Language Switcher</title>
+    <link rel="stylesheet" href="language.css">
     <script type="module" src="js.js"></script>
 </head>
 
 <body>
+    <div>
+        <p>Vælg et sprog</p>
+    <select name="language" id="sprog">
+        <option class="dansk" value="da">Danish</option>
+        <option class="german" value="de">German</option>
+    </select>
+</div>
     <header class="header">UDSKIFTES
         <label for="language"></label>
-        <select name="language" id="skiftSprog">
-            <option value="da">Danish</option>
-            <option value="de">German</option>
-        </select>
     </header>
     <p>Content</p>
     <div class="footer">UDSKIFTES</div>
