@@ -17,18 +17,78 @@ const moreSeats = veh.filter((vehicle) => vehicle.passengers > 2);
 const ownerByJonas = veh.filter((vehicle) => vehicle.ownedBy === "Jonas" && vehicle.isElectric === true);
 const allBreadFuel = veh.filter((vehicle) => vehicle.fuel === "Rugbrød" && vehicle.passengers > 1);
 
-showTheseVehicles(allBreadFuel);
+document.querySelectorAll("button").forEach((btn) => {
+  btn.addEventListener("click",()=>{filterHandler(btn.dataset.filter)} );
+});
+
+function filterHandler(filter) {
+  console.log("filterHandler", filter);
+  let filterdArr;
+  switch (filter) {
+    case "all":
+      filterdArr = veh;
+      break;
+    case "isElectric":
+/*       filterdArr = veh.filter((vehicle) => vehicle.isElectric); */
+      filterdArr = allElectricVehicle;
+      break;
+      case "moreThanOnePass":
+/*         filterdArr = veh.filter((vehicle) => vehicle.passengers > 1); */
+        filterdArr = moreSeats;
+        break;
+      case "JonasOwnedElVeh":
+/*         filterdArr = veh.filter((vehicle) => vehicle.ownedBy === "Jonas" && vehicle.isElectric); */
+        filterdArr = ownerByJonas;
+        break;
+      case "ryebread":
+      /*   filterdArr = veh.filter((vehicle) => vehicle.fuel === "Rugbrød" && vehicle.passengers > 1); */
+      filterdArr = allBreadFuel;
+        break;
+  }
+  
+  showTheseVehicles(filterdArr)
+};
+
+
+/* Tager undefined ud*/
+
+
+showTheseVehicles(veh);
 
 function showTheseVehicles(arr) {
-    arr.forEach(each => {
-        tbodyPointer.innerHTML += `<tr>
-        <td>${each.type}</td>
-        <td>${each.fuel}</td>
-        <td>${each.passengers}</td>
-        <td>${each.stops}</td>
-        <td>${each.ownedBy}</td>
-        <td>${each.isElectric}</td>
-        <td>${each.isTandem}</td>
-    </tr>`;
-    });
+  tbodyPointer.innerHTML = "";
+  arr.forEach((each) => {
+    tbodyPointer.innerHTML += `<tr>
+  <td>${beautify(each.type)}</td>
+  <td>${beautify(each.fuel)}</td>
+  <td>${beautify(each.passengers)}</td> 
+  <td>${beautify(each.stops)}</td>
+  <td>${beautify(each.ownedBy)}</td>
+  <td>${beautify(each.isElectric)}</td> 
+  <td>${beautify(each.isTandem)}</td>
+</tr>`;
+  });
+/*   document.querySelectorAll("td").forEach((cell) => {
+    if (cell.innerHTML === "undefined") {
+      cell.innerHTML = "";
+    }
+  }); */
 }
+
+function beautify(str){
+  switch (str) {
+    case undefined:
+    str = "-";
+    break;
+    case true:
+      str = "X";
+      break;
+    }
+ /*  if (str === undefined) {
+    str = "";
+  }
+  if (str === true) {
+    str = "X"
+  } */
+  return str;
+};
