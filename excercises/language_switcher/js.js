@@ -45,25 +45,3 @@ function visTysk () {
   switchLanguage(tysk);
 }
 
-/* function filterHandler(filter) {
-  console.log("filterHandler", filter);
-  let filterdArr;
-  switch (filter) {
-    case "all":
-      filterdArr = veh;
-      break; */
-
-
-
-      /* const student1 = {
-        firstName: "Jonas",
-        lastName: "Vingegård",
-      }
-      
-      const nameToDealWith = "firstName";
-      
-      console.log(student1.firstName);
-      console.log(student1["firstName"]); */
-      
-      /* Den her skal briges */
-      /* console.log(student1[nameToDealWith]); */
