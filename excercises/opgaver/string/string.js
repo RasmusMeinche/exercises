@@ -36,8 +36,15 @@ const lastNameName = name[2];
 
 console.log(name); */
 
-const fullName = "Peter";
+/* const fullName = "Peter";
 
 const nameUpper = fullName.substring(0, 2).toLowerCase() + fullName.charAt(2).toUpperCase() + fullName.substring(3).toLowerCase();
+
+console.log(nameUpper); */
+
+
+const fullName = "Peter";
+
+const nameUpper = fullName.charAt(0).toUpperCase() + fullName.slice(1).toLowerCase();
 
 console.log(nameUpper);
