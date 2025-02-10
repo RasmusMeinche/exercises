@@ -24,6 +24,15 @@ function splitName(fullName) {
   console.log(name);
 } */
 
+const theName = "Peter Heronimous Lind";
+
+const firstName = theName.substring(0, theName.indexOf(" "));
+const middleName = theName.substring(theName.indexOf(" ") + 1, theName.lastIndexOf(" "));
+const lastName = theName.substring(theName.lastIndexOf(" ") + 1);
+
+
+
+
 
 /* const fullName = "Peter Heronimous Lind";
 

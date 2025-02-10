@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background-color: rgb(86, 109, 129);
+}
+
+header h1 {
+    text-align: start;
+}
+
+header h2 {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+main {
+    width: 100%;
+    height: 75vh;
+}
+
+footer {
+    background-color: rgb(86, 109, 129);
+    width: 100%;
+    height: 80px;}
+
+
