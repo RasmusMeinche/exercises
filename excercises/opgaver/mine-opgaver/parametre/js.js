@@ -203,8 +203,8 @@ console.log(returnKva([1, 2, 3, 4, 5], 2)) */
 //15
 /* Skriv en funktion, der finder det længste ord i en sætning. */
 
-function maxLength (sentence) {
+/* function maxLength (sentence) {
     return word 
 }
 
-console.log(maxLength())
+console.log(maxLength()) */
