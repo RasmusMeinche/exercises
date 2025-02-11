@@ -7,3 +7,7 @@ body {
     background-color: gold;
     font-size: larger;
 }
+
+.glow {
+    color: rgb(255, 255, 255);
+}

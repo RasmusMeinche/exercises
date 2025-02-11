@@ -9,12 +9,13 @@ dialog.close();
 
 
 function switchWords() {
-    timesClicked ++;
+    timesClicked++;
     let textElement = document.querySelector("p");
     let text = textElement.textContent;
 
     curseWords.forEach((word) => {
-        text = text.replace(word.bad, word.good);
+        const replacement = `<span class="glow">${word.good}</span>`;
+        text = text.replace(word.bad, replacement);
     });
 
     if (timesClicked >= 2) {
