@@ -33,7 +33,7 @@ footer {
     background-color: var(--footer-color);
 }
 
-:root {
+/* :root {
     --bg-color: #ffffff;
     --header-color: #ffffffa6;
     --footer-color: #ffffffa6;
@@ -58,6 +58,37 @@ body[data-theme="dark"] {
 }
 
 body[data-theme="hawaii"] {
+    --bg-color: var(--bg-color3);
+    --header-color: var(--header-color3);
+    --footer-color: var(--footer-color3);
+    --text-color: var(--text-color3);
+} */
+
+:root {
+    --bg-color: #ffffff;
+    --header-color: #ffffffa6;
+    --footer-color: #ffffffa6;
+    --text-color: #000000;
+
+    --bg-color2: #000000;
+    --header-color2: #333;
+    --footer-color2: #333;
+    --text-color2: #ffffff;
+
+    --bg-color3: #cd08df;
+    --header-color3: #333;
+    --footer-color3: #007bff;
+    --text-color3: #1cb624;
+}
+
+[data-theme="dark"] {
+    --bg-color: var(--bg-color2);
+    --header-color: var(--header-color2);
+    --footer-color: var(--footer-color2);
+    --text-color: var(--text-color2);
+}
+
+[data-theme="hawaii"] {
     --bg-color: var(--bg-color3);
     --header-color: var(--header-color3);
     --footer-color: var(--footer-color3);
