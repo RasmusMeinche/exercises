@@ -1,4 +1,4 @@
-let a = 42;
+/* let a = 42;
 let b = "Hello, world!";
 let c = true;
 let d = null;
@@ -23,4 +23,4 @@ console.log(typeof { key: "value" });
 console.log(typeof [10, 20, 30]);
 console.log(typeof function() {});
 console.log(typeof null);
-console.log(typeof undefined);
+console.log(typeof undefined); */
