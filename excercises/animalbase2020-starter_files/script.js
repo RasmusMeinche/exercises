@@ -101,7 +101,7 @@ function selectSort (event) {
     if (sortDir === "asc") {
         event.target.dataset.sortDirection = "desc";
     } else {
-        event.target.dataset.sortDirection = "asc ";
+        event.target.dataset.sortDirection = "asc";
     }
     console.log(`user selected ${sortBy} - ${sortDir}`);
     setSort(sortBy, sortDir);
@@ -113,7 +113,7 @@ settings.sortDir = sortDir;
 buildList();
 }
 
-function sortList (sortedList, sortDir) {
+function sortList (sortedList) {
     let direction = 1;
     if (settings.sortDir === "desc") {
         direction = -1;
