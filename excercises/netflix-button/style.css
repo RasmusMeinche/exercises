@@ -59,3 +59,7 @@ body {
     cursor: pointer;
     transition: color 0.3s ease-in-out;
 }
+
+.hide {
+    display: none;
+}

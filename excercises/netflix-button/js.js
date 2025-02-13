@@ -35,6 +35,7 @@ function buttonHasBeenClicked() {
 
 function putOnAnimation() {
     if (buttonClicked === true) {
+        document.querySelector("button").classList.add("hide");
     } else {
         start();
     }
