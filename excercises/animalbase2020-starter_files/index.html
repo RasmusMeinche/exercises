@@ -21,10 +21,11 @@
     <table id="list">
       <thead>
         <tr id="sorting">
+          <th data-action="sort" data-sort-direction="asc" data-sort="star">Star</th>
           <th data-action="sort" data-sort-direction="asc" data-sort="name">Name</th>
-          <th data-action="sort" data-sort-direction="desc" data-sort="type">Type</th>
+          <th data-action="sort" data-sort-direction="asc" data-sort="type">Type</th>
           <th data-action="sort" data-sort-direction="asc" data-sort="desc">Description</th>
-          <th data-action="sort" data-sort-direction="desc" data-sort="age">Age</th>
+          <th data-action="sort" data-sort-direction="asc" data-sort="age">Age</th>
         </tr>
       </thead>
       <tbody>
@@ -34,6 +35,7 @@
 
     <template id="animal">
       <tr>
+        <td data-field="star">☆</td>
         <td data-field="name">NAME</td>
         <td data-field="type">TYPE</td>
         <td data-field="desc">DESCRIPTION</td>
