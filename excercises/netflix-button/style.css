@@ -1,0 +1,61 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #f1f1f1;
+}
+
+.fill-button {
+    position: relative;
+    display: flex;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background: none;
+    border: 2px solid #3498db;
+    overflow: hidden;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+    justify-content: center;
+}
+
+.fill-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: #3498db;
+    z-index: -1;
+    animation: fill-animation 2.5s ease-in-out forwards;
+    justify-content: center;
+}
+
+.fill-button:hover::before {
+    animation: fill-animation 2.5s ease-in-out forwards;
+}
+
+@keyframes fill-animation {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.standard {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    background: none;
+    border: 2px solid #3498db;
+    overflow: hidden;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
