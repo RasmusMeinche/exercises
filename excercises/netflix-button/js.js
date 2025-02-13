@@ -14,10 +14,10 @@ function start() {
 }
 
 function animationEnded() {    
-    if (buttonClicked === true) {
-        document.body.style.backgroundColor = "black";
+    if (buttonClicked === false) {
+        document.body.style.backgroundColor = "darkblue";
     } else {
-        document.body.style.backgroundColor = "black";
+        buttonHasBeenClicked();
     }
     
     document.querySelector("button").classList.remove("fill-button");
