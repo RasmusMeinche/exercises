@@ -31,11 +31,11 @@ function buttonHasBeenClicked() {
     document.querySelector("button").classList.remove("fill-button");
     document.querySelector("button").classList.add("standard");
     document.querySelector("button").style.color = "black";
+    document.querySelector("button").classList.add("hide");
 }
 
 function putOnAnimation() {
     if (buttonClicked === true) {
-        document.querySelector("button").classList.add("hide");
     } else {
         start();
     }
