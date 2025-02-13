@@ -192,7 +192,7 @@ function clickStar () {
         if (animal.winner === true) {
             animal.winner = false;
         } else {
-            animal.winner = true;
+            tryToMakeAWinner (animal);
         }
 
         buildList();
@@ -204,3 +204,43 @@ function clickStar () {
 }
 
 
+function tryToMakeAWinner (selectedAnimal) {
+
+    const winners = allAnimals.filter(animal => animal.winner);
+
+    const numberOfWinners = winners.length;
+    const other = winners.filter(animal => animal.type === selectedAnimal.type).shift();
+    if(other !== undefined) {
+        console.log("There can be only one winner of each type!")
+        removeOther(other);
+    } else if(numberOfWinners >= 2) {
+        console.log("There can only be 2 winners!");
+        removeAorB(winners[0], winners[1]);
+    } else {
+        makeWinner(selectedAnimal);
+    }
+
+
+    makeWinner(selectedAnimal);
+
+    function removeOther (other) {
+        removeWinner(other);
+        makeWinner(selectedAnimal);
+    }
+
+    function removeAorB (winnerA, winnerB) {
+        removeWinner(winnerA);
+        makeWinner(selectedAnimal);
+
+        removeWinner(winnerB);
+        makeWinner(selectedAnimal);
+    }
+
+    function removeWinner (winnerAnimal) {
+        winnerAnimal.winner = false;
+    }
+
+    function makeWinner(animal) {
+        animal.winner = true;
+    }
+}
