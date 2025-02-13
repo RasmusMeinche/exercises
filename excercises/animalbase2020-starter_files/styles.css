@@ -40,3 +40,10 @@ td[data-field=winner]::after {
 td[data-field=winner][data-winner=false]::after {
   filter: grayscale(1);
 }
+
+.dialog {
+  box-shadow: 1px 1px 10px #333;
+  border-radius: 12px;
+  padding: 2em;
+  
+}
