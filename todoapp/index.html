@@ -8,15 +8,34 @@
 </head>
 <body>
     <div class="container-opgaver">
-        <h1>Opgaver</h1>
-        <template id="tp">
-            <div id="opgaver">
-                <h2 data-title="1"></h2>
-                <p></p>
-            </div>
 
+        <h1>Opgaver</h1>
+        <template id="opgave-template">
+            <tr>
+                <td data-field="over"></td>
+                <td data-field="besk"></td>
+            </tr>
         </template>
-    </div>
+
+        
+    <div id="template-input"></div>
+
+            <div class="opgaver none">
+                <h4>Opgavens navn</h4>
+                <INPUT TYPE="text" id="input-overskrift">
+                <h2 class="overskift"></h2>
+                <h4>Beskrivelse</h4>
+                <p class="desc"></p>
+                <INPUT TYPE="text" id="input-text">
+            </div>
+        </div>
+
+        <div id="done-opgaver">
+            <h1>Færdige opgaver</h1>
+        </div>
+        <div class="container-knap">
+            <button id="add-knap">Tilføj opgave</button>
+        </div>
 </body>
 <script src="script.js"></script>
 </html>
