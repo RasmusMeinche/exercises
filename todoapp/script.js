@@ -50,6 +50,9 @@ function SavedData(overskrift, beskrivelse, nummer, isFavorite = false) {
     clone.querySelector("[data-field=besk]").textContent = beskrivelse;
     clone.querySelector("[data-field=antal]").textContent = nummer;
 
+    // Tilføj listener på check
+    const checkBtn = clone.querySelector("td:nth-child(4)");
+
     // ⭐ Tilføj stjerne-knap
     const starBtn = clone.querySelector("td:first-child"); // Stjerne-ikonet
     starBtn.textContent = isFavorite ? "★" : "☆"; // Sæt startikon afhængigt af favoritstatus
