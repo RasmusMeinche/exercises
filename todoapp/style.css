@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: aliceblue;
+    background-color: rgb(57, 140, 212);
 }
 
 .container-opgaver {
@@ -35,7 +35,6 @@ body {
     align-items: center;
     border-radius: 1rem;
     position: relative;
-    top: 200px;
     padding-bottom: 20px;
 }
 
@@ -92,10 +91,19 @@ tr {
     border: solid 1px black;
     border-radius: 0.5rem;
     background-color: white;
+    cursor: pointer;
 }
 
 [data-field="done"] {
     padding: 8.5px;
+    border: solid 1px black;
+    border-radius: 0.5rem;
+    margin-left: 5px;
+    background-color: white;
+}
+
+[data-field="antal"] {
+    padding: 10px;
     border: solid 1px black;
     border-radius: 0.5rem;
     margin-left: 5px;
