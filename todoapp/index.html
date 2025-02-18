@@ -12,8 +12,12 @@
         <h1>Opgaver</h1>
         <template id="opgave-template">
             <tr>
+                <td data-field="stjerne">☆</td>
                 <td data-field="over"></td>
                 <td data-field="besk"></td>
+                <td data-field="antal"></td>
+                <td data-field="done">✓</td>
+                <td data-field="skrald">🗑</td>
             </tr>
         </template>
 
@@ -27,6 +31,8 @@
                 <h4>Beskrivelse</h4>
                 <p class="desc"></p>
                 <INPUT TYPE="text" id="input-text">
+                <h4>Antal</h4>
+                <input type="number" id="input-number">
                 <button class="submit">Tilføj</button>
             </div>
         </div>

@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+body {
+    background-color: aliceblue;
+}
+
 .container-opgaver {
     display: flex;
     flex-direction: column;
@@ -50,11 +54,52 @@
 
 tr {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 [data-field="over"] {
-    background-color: aqua;
+    width: fit-content;
+    padding: 10px;
+    border: solid 1px black;
+    margin-left: 5px;
+    border-radius: 0.5rem;
+    background-color: white;
+    font-weight: bolder;
+}
+
+[data-field="besk"] {
+    padding: 10px;
+    margin-left: 5px;
+    border: solid 1px black;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+[data-field="skrald"] {
+    padding: 8.5px;
+    margin-left: 5px;
+    border: solid 1px black;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+[data-field="stjerne"] {
+    padding: 8.5px;
+    border: solid 1px black;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+[data-field="done"] {
+    padding: 8.5px;
+    border: solid 1px black;
+    border-radius: 0.5rem;
+    margin-left: 5px;
+    background-color: white;
 }
 
 #done-opgaver {
