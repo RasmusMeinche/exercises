@@ -50,22 +50,24 @@ function SavedData(overskrift, beskrivelse, nummer, isFavorite = false) {
     clone.querySelector("[data-field=besk]").textContent = beskrivelse;
     clone.querySelector("[data-field=antal]").textContent = nummer;
 
-    // Tilføj listener på check
-    const checkBtn = clone.querySelector("td:nth-child(4)");
+    // Tilføj listener på check (✓)
+    const checkBtn = clone.querySelector("[data-field=done]");
+    checkBtn.addEventListener("click", function () {
+        moveToDone(overskrift, beskrivelse, nummer, checkBtn.parentElement);
+    });
 
     // ⭐ Tilføj stjerne-knap
-    const starBtn = clone.querySelector("td:first-child"); // Stjerne-ikonet
-    starBtn.textContent = isFavorite ? "★" : "☆"; // Sæt startikon afhængigt af favoritstatus
+    const starBtn = clone.querySelector("[data-field=stjerne]");
+    starBtn.textContent = isFavorite ? "★" : "☆";
 
-    // Event listener for at skifte mellem ☆ og ★
     starBtn.addEventListener("click", function () {
-        isFavorite = !isFavorite; // Skift favoritstatus
-        starBtn.textContent = isFavorite ? "★" : "☆"; // Opdater ikon
-        updateFavoriteStatus(overskrift, beskrivelse, nummer, isFavorite); // Gem ændring i localStorage
+        isFavorite = !isFavorite;
+        starBtn.textContent = isFavorite ? "★" : "☆";
+        updateFavoriteStatus(overskrift, beskrivelse, nummer, isFavorite);
     });
 
     // 🗑 Tilføj event listener til skraldespanden
-    const deleteBtn = clone.querySelector("td:last-child");
+    const deleteBtn = clone.querySelector("[data-field=skrald]");
     deleteBtn.addEventListener("click", function () {
         removeItem(overskrift, beskrivelse, nummer, deleteBtn.parentElement);
     });
@@ -137,6 +139,36 @@ function removeItem(overskrift, beskrivelse, nummer, element) {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
     // Fjern opgaven fra UI
+    element.remove();
+}
+
+function moveToDone(overskrift, beskrivelse, nummer, element) {
+    // Fjern fra localStorage
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks = tasks.filter(task => 
+        !(task.overskrift === overskrift && task.beskrivelse === beskrivelse && task.nummer === String(nummer))
+    );
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    // Opret ny færdig opgave i UI
+    const doneContainer = document.querySelector("#done-opgaver");
+    const doneTask = document.createElement("div");
+    doneTask.classList.add("done-task");
+    doneTask.innerHTML = `
+        <h3>${overskrift}</h3>
+        <p>${beskrivelse}</p>
+        <p>Antal: ${nummer}</p>
+        <button class="delete-done">🗑</button>
+    `;
+
+    // Tilføj event listener til slet-knap
+    doneTask.querySelector(".delete-done").addEventListener("click", function () {
+        doneTask.remove();
+    });
+
+    doneContainer.appendChild(doneTask);
+
+    // Fjern opgave fra "to-do" listen
     element.remove();
 }
 
