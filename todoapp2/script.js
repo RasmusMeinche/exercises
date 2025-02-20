@@ -15,6 +15,8 @@ function start() {
 
     // Holder former lukket indtil den bliver klikket
     document.querySelector(".form").classList.add("none");
+
+    
 }
 
 function formOpensUp() {
@@ -65,6 +67,16 @@ function SaveTaskData() {
     document.getElementById("input-overskrift").value = "";
     document.getElementById("input-text").value = "";
     document.getElementById("input-number").value = "";
+
+    // Save task to localStorage
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.push({
+        id: taskRow.dataset.id,
+        overskrift: taskInput,
+        beskrivelse: descInput,
+        antal: howManyInput
+    });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function removeTask(event) {
@@ -91,41 +103,34 @@ function tasksDone(event) {
     const taskElement = event.target.closest("tr");
     const taskId = taskElement.dataset.id;
 
+    // Debugging: Log the taskId to ensure it's being retrieved correctly
     console.log("Marking task as done with ID:", taskId);
 
-    
-}
+    // Remove the task from #template-output
+    taskElement.remove();
 
-/* function loadSavedTasks () {
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    // Append the task to the done tasks container
+    const doneContainer = document.querySelector("#done-opgaver");
+    const doneTemplate = document.querySelector("#task-done").content.cloneNode(true);
+    const doneTaskRow = doneTemplate.querySelector("tr");
 
-    console.log("Indlæser opgaver:", tasks);
+    doneTaskRow.dataset.id = taskId;
+    doneTaskRow.querySelector("[data-field=over]").textContent = taskElement.querySelector("[data-field=over]").textContent;
+    doneTaskRow.querySelector("[data-field=besk]").textContent = taskElement.querySelector("[data-field=besk]").textContent;
+    doneTaskRow.querySelector("[data-field=antal]").textContent = taskElement.querySelector("[data-field=antal]").textContent;
 
-    let activeTasks = tasks.filter(task => 
-        !doneTasks.some(doneTask => 
-            doneTask.overskrift === task.overskrift && doneTask.beskrivelse === task.beskrivelse && doneTask.nummer === task.nummer
-        )
-    );
+    doneContainer.appendChild(doneTaskRow);
 
-
-} */
-
-/* function loadSavedTasks() {
+    // Update localStorage
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     let doneTasks = JSON.parse(localStorage.getItem("doneTasks")) || [];
 
-    console.log("Indlæser opgaver:", tasks);
-    console.log("Indlæser færdige opgaver:", doneTasks);
+    const task = tasks.find(task => task.id == taskId);
+    if (task) {
+        doneTasks.push(task);
+        tasks = tasks.filter(task => task.id != taskId);
+    }
 
-    let activeTasks = tasks.filter(task => 
-        !doneTasks.some(doneTask => 
-            doneTask.overskrift === task.overskrift && doneTask.beskrivelse === task.beskrivelse && doneTask.nummer === task.nummer
-        )
-    );
-
-    localStorage.setItem("tasks", JSON.stringify(activeTasks));
-
-    activeTasks.forEach(task => {
-        SavedData(task.overskrift, task.beskrivelse, task.nummer, task.isFavorite);
-    });
-} */
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem("doneTasks", JSON.stringify(doneTasks));
+}

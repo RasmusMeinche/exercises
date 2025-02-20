@@ -8,53 +8,45 @@
 </head>
 <body>
     <div class="container-opgaver">
-
         <h1>Opgaver</h1>
         <template id="opgave-template">
-            <table>
-                <tbody>
-                    <tr data-field="task">
-                        <td id="star" data-field="stjerne">☆</td>
-                        <td data-field="over"></td>
-                        <td data-field="besk"></td>
-                        <td data-field="antal"></td>
-                        <td id="done" data-field="done">✓</td>
-                        <td id="skrald" data-field="skrald">🗑</td>
-                    </tr>
-                </tbody>
-            </table>
+            <tr data-field="task">
+                <td id="star" data-field="stjerne">☆</td>
+                <td data-field="over"></td>
+                <td data-field="besk"></td>
+                <td data-field="antal"></td>
+                <td id="done" data-field="done">✓</td>
+                <td id="skrald" data-field="skrald">🗑</td>
+            </tr>
         </template>
-        
-
-        
-        <table>
-            <tbody id="template-output"></tbody>
-        </table>
-
-
-            <div class="form">
-                <h4>Opgavens navn</h4>
-                <INPUT TYPE="text" id="input-overskrift">
-                <h2 class="overskift"></h2>
-                <h4>Beskrivelse</h4>
-                <p class="desc"></p>
-                <INPUT TYPE="text" id="input-text">
-                <h4>Antal</h4>
-                <input type="number" id="input-number">
-                <button class="submit">Tilføj</button>
-            </div>
+        <div id="template-output"></div>
+        <div class="form">
+            <h4>Opgavens navn</h4>
+            <input type="text" id="input-overskrift">
+            <h2 class="overskift"></h2>
+            <h4>Beskrivelse</h4>
+            <p class="desc"></p>
+            <input type="text" id="input-text">
+            <h4>Antal</h4>
+            <input type="number" id="input-number">
+            <button class="submit">Tilføj</button>
         </div>
-
-        <div id="done-opgaver">
-            <h1>Færdige opgaver</h1>
-        <template id="task-done"></template>
-
-
-
-
-        <div class="container-knap">
-            <button id="add-knap">Tilføj opgave</button>
-        </div>
+    </div>
+    <div id="done-opgaver">
+        <h1>Færdige opgaver</h1>
+        <template id="task-done">
+            <tr data-field="task">
+                <td id="star" data-field="stjerne">☆</td>
+                <td data-field="over"></td>
+                <td data-field="besk"></td>
+                <td data-field="antal"></td>
+                <td id="skrald" data-field="skrald">🗑</td>
+            </tr>
+        </template>
+    </div>
+    <div class="container-knap">
+        <button id="add-knap">Tilføj opgave</button>
+    </div>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>
