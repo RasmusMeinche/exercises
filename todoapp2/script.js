@@ -16,7 +16,8 @@ function start() {
     // Holder former lukket indtil den bliver klikket
     document.querySelector(".form").classList.add("none");
 
-    
+    // Load tasks from localStorage
+    loadTasks();
 }
 
 function formOpensUp() {
@@ -25,6 +26,61 @@ function formOpensUp() {
 
 function closeForm() {
     document.querySelector(".form").classList.add("none");
+}
+
+function loadTasks() {
+    // Load tasks from localStorage
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    let doneTasks = JSON.parse(localStorage.getItem("doneTasks")) || [];
+
+    tasks.forEach(task => {
+        const clone = document.querySelector("#opgave-template").content.cloneNode(true);
+        const taskRow = clone.querySelector("tr");
+        taskRow.dataset.id = task.id;
+
+        taskRow.querySelector("[data-field=over]").textContent = task.overskrift;
+        taskRow.querySelector("[data-field=besk]").textContent = task.beskrivelse;
+        taskRow.querySelector("[data-field=antal]").textContent = task.antal;
+
+        const trashButton = taskRow.querySelector("[data-field=skrald]");
+        if (trashButton) {
+            trashButton.addEventListener("click", removeTask);
+        }
+
+        const doneButton = taskRow.querySelector("[data-field=done]");
+        if (doneButton) {
+            doneButton.addEventListener("click", tasksDone);
+        }
+
+        const starButton = taskRow.querySelector("[data-field=stjerne]");
+        if (starButton) {
+            starButton.addEventListener("click", toggleStar);
+        }
+
+        document.querySelector("#template-output").appendChild(taskRow);
+    });
+
+    doneTasks.forEach(task => {
+        const clone = document.querySelector("#task-done").content.cloneNode(true);
+        const taskRow = clone.querySelector("tr");
+        taskRow.dataset.id = task.id;
+
+        taskRow.querySelector("[data-field=over]").textContent = task.overskrift;
+        taskRow.querySelector("[data-field=besk]").textContent = task.beskrivelse;
+        taskRow.querySelector("[data-field=antal]").textContent = task.antal;
+
+        const trashButton = taskRow.querySelector("[data-field=skrald]");
+        if (trashButton) {
+            trashButton.addEventListener("click", removeDoneTask);
+        }
+
+        const starButton = taskRow.querySelector("[data-field=stjerne]");
+        if (starButton) {
+            starButton.addEventListener("click", toggleStar);
+        }
+
+        document.querySelector("#done-opgaver").appendChild(taskRow);
+    });
 }
 
 // Den her henter dataen om vores gemte tasks
@@ -58,6 +114,14 @@ function SaveTaskData() {
         doneButton.addEventListener("click", tasksDone);
     } else {
         console.error('Element with data-field="done" not found.');
+    }
+
+    // Add event listener for the star button
+    const starButton = taskRow.querySelector("[data-field=stjerne]");
+    if (starButton) {
+        starButton.addEventListener("click", toggleStar);
+    } else {
+        console.error('Element with data-field="stjerne" not found.');
     }
 
     // Tilføj kun <tr> til <tbody>
@@ -119,6 +183,22 @@ function tasksDone(event) {
     doneTaskRow.querySelector("[data-field=besk]").textContent = taskElement.querySelector("[data-field=besk]").textContent;
     doneTaskRow.querySelector("[data-field=antal]").textContent = taskElement.querySelector("[data-field=antal]").textContent;
 
+    // Add event listener for the trash icon in the done task
+    const doneTrashButton = doneTaskRow.querySelector("[data-field=skrald]");
+    if (doneTrashButton) {
+        doneTrashButton.addEventListener("click", removeDoneTask);
+    } else {
+        console.error("Done trash button is null!");
+    }
+
+    // Add event listener for the star button in the done task
+    const doneStarButton = doneTaskRow.querySelector("[data-field=stjerne]");
+    if (doneStarButton) {
+        doneStarButton.addEventListener("click", toggleStar);
+    } else {
+        console.error("Done star button is null!");
+    }
+
     doneContainer.appendChild(doneTaskRow);
 
     // Update localStorage
@@ -133,4 +213,33 @@ function tasksDone(event) {
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
     localStorage.setItem("doneTasks", JSON.stringify(doneTasks));
+}
+
+function removeDoneTask(event) {
+    const taskElement = event.target.closest("tr");
+    const taskId = taskElement.dataset.id;
+
+    // Debugging: Log the taskId to ensure it's being retrieved correctly
+    console.log("Removing done task with ID:", taskId);
+
+    // Henter done task fra localStorage
+    let doneTasks = JSON.parse(localStorage.getItem("doneTasks")) || [];
+
+    // Remove the done task with the matching id
+    doneTasks = doneTasks.filter(task => task.id != taskId);
+
+    // Save the updated array back to localStorage
+    localStorage.setItem("doneTasks", JSON.stringify(doneTasks));
+
+    // Remove the task element from the DOM
+    taskElement.remove();
+}
+
+function toggleStar(event) {
+    const starElement = event.target;
+    if (starElement.textContent === "☆") {
+        starElement.textContent = "★";
+    } else {
+        starElement.textContent = "☆";
+    }
 }

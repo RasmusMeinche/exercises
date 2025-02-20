@@ -5,6 +5,8 @@
 
 body {
     background-color: rgb(57, 140, 212);
+    /* font-family: "EB Garamond", serif; */
+    font-family: "Raleway", serif;
 }
 
 .container-opgaver {
@@ -12,6 +14,7 @@ body {
     flex-direction: column;
     justify-content: center;
     width: fit-content;
+    min-width: 600px;
     align-items: center;
     margin-top: 50px;
     background-color: aliceblue;
@@ -46,14 +49,14 @@ body {
 }
 
 .submit {
-    margin-top: 20px;
     width: 200px;
     height: 30px;
     font-size: 1.1rem;
-
+    margin-top: 30px;
+    margin-bottom: 40px;
 }
 
-#input-overskrift, #input-text {
+#input-overskrift, #input-text, #input-number{
     width: 200px;
     height: 30px;
 }
@@ -73,10 +76,10 @@ tr {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    width: fit-content;
+    max-width: 800px;
+    width: auto;
     border-radius: 0.5rem;
     padding: 5px;
-    width: 100%;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
@@ -107,6 +110,7 @@ tr {
     padding: 8.5px;
     border-radius: 0.5rem;
     cursor: pointer;
+    font-size: larger;
 }
 
 [data-field="done"] {
@@ -120,16 +124,28 @@ tr {
 
 [data-field="antal"] {
     padding: 10px;
-/*     border: solid 1px black; */
     border-radius: 0.5rem;
     margin-left: 5px;
 }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 300px;
+    margin: 0 auto 40px;
+    align-items: center;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
 
 #done-opgaver {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: fit-content;
+    min-width: 600px;
     align-items: center;
     margin-top: 50px;
     background-color: aliceblue;
@@ -154,28 +170,14 @@ tr {
     margin-top: 20px;
 }
 
-.done-task {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    width: fit-content;
-    border-radius: 0.5rem;
-    padding: 5px;
-    width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-    background-color: white;
-}
-
 .done-task h3,
 .done-task p {
-    width: fit-content;
-    padding: 10px;
-    margin-left: 5px;
+   padding-top: 20px;
+    padding: 20px 40px 0px 40px;
+    margin-bottom: 40px;
     border-radius: 0.5rem;
     background-color: white;
-    font-weight: bolder;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 
 .container-knap {
@@ -191,8 +193,33 @@ tr {
     height: 50px;
     font-size: 1.5rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    font-family: "Raleway", serif;
+    background-color: white;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.container-knap #add-knap:hover {
+    transform: scale(1.1);
 }
 
 .none {
     display: none;
+}
+
+[data-field="task"] {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    width: fit-content;
+    border-radius: 0.5rem;
+    padding: 5px;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    background-color: white;
+    margin-left: auto;
 }
