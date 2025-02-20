@@ -170,14 +170,29 @@ tr {
     margin-top: 20px;
 }
 
+.done-task {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    width: fit-content;
+    border-radius: 0.5rem;
+    padding: 5px;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    background-color: white;
+    margin-left: auto;
+}
+
 .done-task h3,
 .done-task p {
-   padding-top: 20px;
-    padding: 20px 40px 0px 40px;
-    margin-bottom: 40px;
+    width: fit-content;
+    padding: 10px;
+    margin-left: 5px;
     border-radius: 0.5rem;
     background-color: white;
-    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    font-weight: bolder;
 }
 
 .container-knap {
@@ -210,7 +225,7 @@ tr {
 }
 
 [data-field="task"] {
-    display: flex;
+display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
