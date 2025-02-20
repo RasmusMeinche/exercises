@@ -6,7 +6,6 @@ function start() {
 
     addButton.addEventListener("click", formOpensUp);
 
-    // Add event listener for the submit button only once
     submitButton.addEventListener("click", function(event) {
         event.preventDefault();
         SaveTaskData();
@@ -16,7 +15,7 @@ function start() {
     // Holder former lukket indtil den bliver klikket
     document.querySelector(".form").classList.add("none");
 
-    // Load tasks from localStorage
+    // Load tasks fra localStorage
     loadTasks();
 }
 
@@ -29,7 +28,7 @@ function closeForm() {
 }
 
 function loadTasks() {
-    // Load tasks from localStorage
+    // Load tasks fra localStorage
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     let doneTasks = JSON.parse(localStorage.getItem("doneTasks")) || [];
 
@@ -108,7 +107,7 @@ function SaveTaskData() {
         console.error("Trash button is null!");
     }
 
-    // Add event listener for the done button
+    // tilføjer eventlistner
     const doneButton = taskRow.querySelector("[data-field=done]");
     if (doneButton) {
         doneButton.addEventListener("click", tasksDone);
@@ -116,7 +115,7 @@ function SaveTaskData() {
         console.error('Element with data-field="done" not found.');
     }
 
-    // Add event listener for the star button
+    // tilføjer eventlistner
     const starButton = taskRow.querySelector("[data-field=stjerne]");
     if (starButton) {
         starButton.addEventListener("click", toggleStar);
@@ -132,7 +131,7 @@ function SaveTaskData() {
     document.getElementById("input-text").value = "";
     document.getElementById("input-number").value = "";
 
-    // Save task to localStorage
+    // gemmer til localStorage
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     tasks.push({
         id: taskRow.dataset.id,
@@ -147,19 +146,18 @@ function removeTask(event) {
     const taskElement = event.target.closest("tr");
     const taskId = taskElement.dataset.id;
 
-    // Debugging: Log the taskId to ensure it's being retrieved correctly
     console.log("Removing task with ID:", taskId);
 
     // Henter task fra localStorage
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-    // Remove the task with the matching id
+    // fjerner opgaven med matchende id
     tasks = tasks.filter(task => task.id != taskId);
 
-    // Save the updated array back to localStorage
+    // Gemmer det opdaterede array
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
-    // Remove the task element from the DOM
+    // Fjerner elementet fra HTML'en
     taskElement.remove();
 }
 
@@ -167,13 +165,12 @@ function tasksDone(event) {
     const taskElement = event.target.closest("tr");
     const taskId = taskElement.dataset.id;
 
-    // Debugging: Log the taskId to ensure it's being retrieved correctly
     console.log("Marking task as done with ID:", taskId);
 
-    // Remove the task from #template-output
+    // fjerner task fra #template-output
     taskElement.remove();
 
-    // Append the task to the done tasks container
+    // tilføjer dem til det rigtige sted
     const doneContainer = document.querySelector("#done-opgaver");
     const doneTemplate = document.querySelector("#task-done").content.cloneNode(true);
     const doneTaskRow = doneTemplate.querySelector("tr");
@@ -183,7 +180,7 @@ function tasksDone(event) {
     doneTaskRow.querySelector("[data-field=besk]").textContent = taskElement.querySelector("[data-field=besk]").textContent;
     doneTaskRow.querySelector("[data-field=antal]").textContent = taskElement.querySelector("[data-field=antal]").textContent;
 
-    // Add event listener for the trash icon in the done task
+    // eventlistener + debug
     const doneTrashButton = doneTaskRow.querySelector("[data-field=skrald]");
     if (doneTrashButton) {
         doneTrashButton.addEventListener("click", removeDoneTask);
@@ -191,7 +188,7 @@ function tasksDone(event) {
         console.error("Done trash button is null!");
     }
 
-    // Add event listener for the star button in the done task
+    //  event listener + debug
     const doneStarButton = doneTaskRow.querySelector("[data-field=stjerne]");
     if (doneStarButton) {
         doneStarButton.addEventListener("click", toggleStar);
@@ -201,7 +198,7 @@ function tasksDone(event) {
 
     doneContainer.appendChild(doneTaskRow);
 
-    // Update localStorage
+    // opdaterer localStorage
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     let doneTasks = JSON.parse(localStorage.getItem("doneTasks")) || [];
 
@@ -219,19 +216,18 @@ function removeDoneTask(event) {
     const taskElement = event.target.closest("tr");
     const taskId = taskElement.dataset.id;
 
-    // Debugging: Log the taskId to ensure it's being retrieved correctly
     console.log("Removing done task with ID:", taskId);
 
-    // Henter done task fra localStorage
+    // Henter doneTasks fra localStorage
     let doneTasks = JSON.parse(localStorage.getItem("doneTasks")) || [];
 
-    // Remove the done task with the matching id
+    // Fjerner den med matchende id
     doneTasks = doneTasks.filter(task => task.id != taskId);
 
-    // Save the updated array back to localStorage
+    // Gemmer den konverterede data
     localStorage.setItem("doneTasks", JSON.stringify(doneTasks));
 
-    // Remove the task element from the DOM
+    // Fjerner elementet
     taskElement.remove();
 }
 
