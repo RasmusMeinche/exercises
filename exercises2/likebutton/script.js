@@ -48,19 +48,16 @@ function createElement () {
 } */
 
 
-const btn = document.querySelector("button");
+const buttons = document.querySelectorAll(".myButton");
 
-btn.addEventListener("click", likeButton);
+buttons.forEach((button) => {
+    let clicks = 0;
+    button.textContent = "🔥";
 
-let clicks = 0;
+    button.addEventListener("click", () => {
+        clicks++;
+        button.textContent = `🔥Likes ${clicks}`;
+    });
 
-function likeButton () {
-    clicks++;
-    console.log(clicks);
-
-    if (clicks > 0) {
-        btn.textContent = `🔥Likes ${clicks}`;
-    }
-}
-
+});
 
